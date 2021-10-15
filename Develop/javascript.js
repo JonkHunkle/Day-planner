@@ -1,14 +1,7 @@
-//                  what to do?
+//                  MY to do
 
 //pull from local storage and propagate information
-//~~ rows for hours in a business bay (9am-6pm)
-//~~~~~ hour in a column on left, text input in center, save button on right\
-//~~~~~~~~~~save button alerts user the hour's input is saved in local storage
-
-//                   STYLING
-// current hour row background color is white
-//~~~if hour row is less than current hour --> background color is dark gray
-//~~~if hour row > current hour ---> background color is light gray
+//~~~~~~save button alerts user the hour's input is saved in local storage
 
 //for loop going through business hours and making rows
 for (var i = 9; i < 18; i++) {
@@ -32,10 +25,6 @@ for (var i = 9; i < 18; i++) {
 //       <
 //     </div>
 //  `);
-
-//  <label for="formGroupExampleInput" class="form-label">Example label</label>
-//   <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder"></input>
-//why doesnt this work an
 
 // function pull(){
 //     //pull info from local storage and create
