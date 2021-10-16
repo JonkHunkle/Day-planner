@@ -1,58 +1,43 @@
-//                  MY to do
-
 //pull from local storage and propagate information
-//~~~~~~save button alerts user the hour's input is saved in local storage
+function pull() {}
 
 //for loop going through business hours and making rows
-for (var i = 9; i < 18; i++) {
+
+for (var i = 9; i < 17; i++) {
+  var classNameToUse = checkHour(i);
   var html = $(`
-  <div class='row'>
-  <label class="form-label col-sm-1"> get ready for ${[i]} o'clock!</label>
-  <textarea type="text" class="form-control text col-sm-10" placeholder="to-do for ${[
+  <div id = 'box${[i]}' class='row'>
+  <label class="form-label col-sm-1"> get ready for ${[i]}:00!</label>
+  <textarea id='text${[
     i,
-  ]} o'clock!"></textarea>
-  <button class='saveBtn col-sm-1'></button>
+  ]}' type="text" ' class="form-control text col-sm-10 ${classNameToUse}" placeholder="to-do for ${[
+    i,
+  ]}:00!"></textarea>
+  <button id='button${[i]}'class= 'saveBtn col-sm-1'></button>
   </div>
   `);
-  var classNameToUse = checkHour(i);
-  $(".text").addClass(classNameToUse);
+
+  console.log("classNameToUse", classNameToUse);
   $("#timeBlock").append(html);
 }
 
-// var html = $(`
-//     <div class=${classNameToUse}>
-//       <h1 class='past'> Time is :${moment().format("dddd")} </h1>
-//       <
-//     </div>
-//  `);
+//grabs value of textbox and saves to local storage
+$(document).on("click", ".saveBtn", function () {
+  console.log("clicking");
+  localStorage.setItem(
+    $(this).siblings(".text").attr("id"),
+    $().siblings(".text").val()
+  );
+  console.log();
+});
 
-// function pull(){
-//     //pull info from local storage and create
-
-// }
-// function saveToLocal(){
-
-// }
-// function hourRows(){
-
-// }
-// function saveBtn(){
-
-// }
-
-//compares current hour to schedule hour
-
+//checks current hour to schedule hour
 function checkHour(hour) {
-  if (hour > moment().format("HH")) {
+  if (hour < moment().format("kk")) {
+    return "past";
+  } else if (hour > moment().format("kk")) {
     return "future";
-  }
-  if (hour === moment().format("HH")) {
+  } else {
     return "present";
   }
-  return "past";
 }
-
-console.log(moment().format("MMMM Do YYYY, h:mm:ss a"));
-// //$(timeBlock).text(moment().format("MMMM Do YYYY, h:mm:ss a"));
-
-// console.log(timeBlock);
