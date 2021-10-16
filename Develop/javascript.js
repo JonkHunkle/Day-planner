@@ -1,5 +1,4 @@
 //pull from local storage and propagate information
-function pull() {}
 
 //for loop going through business hours and making rows
 
@@ -8,7 +7,7 @@ for (var i = 9; i < 17; i++) {
   var html = $(`
   <div id = 'box${[i]}' class='row'>
   <label class="form-label col-sm-1"> get ready for ${[i]}:00!</label>
-  <textarea id='text${[
+  <textarea id='text ${[
     i,
   ]}' type="text" ' class="form-control text col-sm-10 ${classNameToUse}" placeholder="to-do for ${[
     i,
@@ -16,8 +15,7 @@ for (var i = 9; i < 17; i++) {
   <button id='button${[i]}'class= 'saveBtn col-sm-1'></button>
   </div>
   `);
-
-  console.log("classNameToUse", classNameToUse);
+  pullLocal(i);
   $("#timeBlock").append(html);
 }
 
@@ -26,9 +24,9 @@ $(document).on("click", ".saveBtn", function () {
   console.log("clicking");
   localStorage.setItem(
     $(this).siblings(".text").attr("id"),
-    $().siblings(".text").val()
+    $(this).siblings(".text").val()
   );
-  console.log();
+  console.log($(this).siblings(".text").val());
 });
 
 //checks current hour to schedule hour
@@ -40,4 +38,11 @@ function checkHour(hour) {
   } else {
     return "present";
   }
+}
+
+//pulling local storage for each row iteration (having issues printing to screen)
+function pullLocal(block) {
+  var guts = localStorage.getItem("text " + block);
+  document.getElementsByClassName("row").innerHTML = "hello";
+  console.log(guts);
 }
