@@ -43,7 +43,7 @@ function checkHour(hour) {
 //rendering local storage for each row iteration (having issues printing to screen)
 function renderLocal() {
   for (let i = 9; i < 17; i++) {
-    var guts = localStorage.getItem("text " + i);
+    var guts = localStorage.getItem("text-" + i);
     $("#text-" + i).text(guts);
   }
 }
