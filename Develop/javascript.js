@@ -6,8 +6,8 @@ for (var i = 9; i < 17; i++) {
   var classNameToUse = checkHour(i);
   var html = $(`
   <div id = 'box${[i]}' class='row'>
-  <label class="form-label col-sm-1"> get ready for ${[i]}:00!</label>
-  <textarea id='text ${[
+  <label class="form-label col-sm-1 title"> get ready for ${[i]}:00!</label>
+  <textarea id='text-${[
     i,
   ]}' type="text" ' class="form-control text col-sm-10 ${classNameToUse}" placeholder="to-do for ${[
     i,
@@ -15,7 +15,7 @@ for (var i = 9; i < 17; i++) {
   <button id='button${[i]}'class= 'saveBtn col-sm-1'></button>
   </div>
   `);
-  pullLocal(i);
+
   $("#timeBlock").append(html);
 }
 
@@ -40,9 +40,12 @@ function checkHour(hour) {
   }
 }
 
-//pulling local storage for each row iteration (having issues printing to screen)
-function pullLocal(block) {
-  var guts = localStorage.getItem("text " + block);
-  document.getElementsByClassName("row").innerHTML = "hello";
-  console.log(guts);
+//rendering local storage for each row iteration (having issues printing to screen)
+function renderLocal() {
+  for (let i = 9; i < 17; i++) {
+    var guts = localStorage.getItem("text " + i);
+    $("#text-" + i).text(guts);
+  }
 }
+
+renderLocal();
